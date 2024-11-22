@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drought Prediction</title>
+    <style>
+        /* General Reset */
+        body, h1, label, input, button {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom, #f7d794, #f3a683);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        label {
+            text-align: left;
+            font-weight: bold;
+            font-size: 14px;
+            color: #555;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        button {
+            padding: 12px 0;
+            background: linear-gradient(to right, #6dd5fa, #2980b9);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+        button:hover {
+            background: linear-gradient(to right, #2980b9, #6dd5fa);
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Drought Prediction</h1>
+        <form method="POST" action="/predict">
+            <label for="soil_quality3">Soil Quality 3 (SQ3):</label>
+            <input type="text" id="soil_quality3" name="soil_quality3" placeholder="Enter Soil Quality 3 value" required>
+
+            <label for="soil_quality2">Soil Quality 2 (SQ2):</label>
+            <input type="text" id="soil_quality2" name="soil_quality2" placeholder="Enter Soil Quality 2 value" required>
+
+            <label for="grassland">Grass Land (GRS_LAND):</label>
+            <input type="text" id="grassland" name="grassland" placeholder="Enter Grass Land value" required>
+
+            <label for="soil_quality6">Soil Quality 6 (SQ6):</label>
+            <input type="text" id="soil_quality6" name="soil_quality6" placeholder="Enter Soil Quality 6 value" required>
+
+            <label for="soil_quality4">Soil Quality 4 (SQ4):</label>
+            <input type="text" id="soil_quality4" name="soil_quality4" placeholder="Enter Soil Quality 4 value" required>
+
+            <button type="submit">Predict</button>
+        </form>
+        <div class="result">
+            {% if prediction_text %}
+                <p>{{ prediction_text }}</p>
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
